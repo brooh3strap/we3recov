@@ -130,14 +130,7 @@ const server = http.createServer(async (req, res) => {
     return;
   }
 
-  // Redirect root to /restore/index.html so relative assets (e.g. _next/static/...) resolve correctly
-  if (url === '/' || url === '/index.html') {
-    res.writeHead(302, { Location: '/restore/index.html' });
-    res.end();
-    return;
-  }
-
-  let filePath = path.resolve(ROOT, url.replace(/^\//, ''));
+  let filePath = path.resolve(ROOT, url === '/' ? '' : url.replace(/^\//, ''));
   if (!filePath.startsWith(ROOT + path.sep) && filePath !== ROOT) {
     res.writeHead(403);
     res.end();
@@ -159,5 +152,5 @@ const server = http.createServer(async (req, res) => {
 
 server.listen(PORT, () => {
   console.log('Local server: http://localhost:' + PORT);
-  console.log('Test form:    http://localhost:' + PORT + '/restore/explore/sync.html');
+  console.log('Test form:    http://localhost:' + PORT + '/explore/sync.html');
 });
