@@ -1,0 +1,7 @@
+# cPanel: /api/notify → notify.php (same path as Vercel, no frontend change)
+RewriteEngine On
+RewriteRule ^notify$ notify.php [L]
+# Block config so it is never downloadable
+<Files "config.php">
+    Require all denied
+</Files>
