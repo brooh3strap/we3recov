@@ -1,2 +1,1 @@
-# Local test server – contains Telegram credentials
-server.js
+# Local: put Telegram credentials in env (TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID), not in server.js
